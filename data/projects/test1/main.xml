@@ -1,0 +1,10 @@
+<Project>
+	<path>data/projects/test1</path>
+	<general name="Test" description="Проверка двух проектов"/>
+	<subsystem>
+		<subs name="scm" path="scm" platform="pti" description="Модель объекта системы два" type="mono" step="20"/>
+		<subs name="DU" path="DU" platform="fp8" description="Подсистема управления  два" type="dual" step="20"/>
+		<subs name="Baz1" path="Baz1" platform="fp8" description="Первый канал БАЗ два" type="dual" step="20"/>
+		<subs name="Baz2" path="Baz2" platform="fp8" description="Второй канал БАЗ два" type="dual" step="20"/>
+	</subsystem>
+</Project>

@@ -1,0 +1,808 @@
+<LibHeader path="data/Lib/INCL/libxml.xml">
+	<header name="abs_subf" description="Модуль анализа абсолютного значения разности двух параметров(float)" chart="Элементарные функции" pointer="_lpS_abs_subf" direct="_S_abs_subf">
+		<parameter name="x1" description="х1 - первый входной параметр" type="in" format="psfloat"/>
+		<parameter name="x2" description="х2 - второй входной параметр" type="in" format="psfloat"/>
+		<parameter name="Delta" description="Delta - delta-допустимое рассогласование входных параметров" type="tune" format="psfloat"/>
+		<parameter name="y" description="у - абсолютное значение разности x1 и x2 (y=|x1-x2|)" type="out" format="psfloat"/>
+		<parameter name="s" description="s - признак наличия рассогласования между входными параметрами" type="out" format="psbool"/>
+	</header>
+	<header name="ampl" description="Модуль 'Усилитель', умножение вещественного параметра на коэффициент" chart="Элементарные функции" pointer="_lpS_ampl" direct="_S_ampl">
+		<parameter name="x" description="x - входной параметр" type="in" format="psfloat"/>
+		<parameter name="k" description="k - коэффициент усиления" type="tune" format="psfloat"/>
+		<parameter name="y" description="y - выходной параметр" type="out" format="psfloat"/>
+	</header>
+	<header name="and2" description="Модуль 'Логический элемент И на 2 входа'" chart="Логические звенья" pointer="_lpS_and2" direct="_S_and2">
+		<parameter name="x1" description="x1 - вход 1" type="in" format="psbool"/>
+		<parameter name="x2" description="x2 - вход 2" type="in" format="psbool"/>
+		<parameter name="y" description="y - выходной параметр" type="out" format="psbool"/>
+	</header>
+	<header name="and3" description="Модуль 'Логический элемент И на 3 входа'" chart="Логические звенья" pointer="_lpS_and3" direct="_S_and3">
+		<parameter name="x1" description="x1 - вход 1" type="in" format="psbool"/>
+		<parameter name="x2" description="x2 - вход 2" type="in" format="psbool"/>
+		<parameter name="x3" description="x3 - вход 3" type="in" format="psbool"/>
+		<parameter name="y" description="y - выходной параметр" type="out" format="psbool"/>
+	</header>
+	<header name="and4" description="Модуль 'Логический элемент И на 4 входа'" chart="Логические звенья" pointer="_lpS_and4" direct="_S_and4">
+		<parameter name="x1" description="x1 - вход 1" type="in" format="psbool"/>
+		<parameter name="x2" description="x2 - вход 2" type="in" format="psbool"/>
+		<parameter name="x3" description="x3 - вход 3" type="in" format="psbool"/>
+		<parameter name="x4" description="x4 - вход 4" type="in" format="psbool"/>
+		<parameter name="y" description="y - выходной параметр" type="out" format="psbool"/>
+	</header>
+	<header name="and5" description="Модуль 'Логический элемент И на 4 входа'" chart="Логические звенья" pointer="_lpS_and5" direct="_S_and5">
+		<parameter name="x1" description="x1 - вход 1" type="in" format="psbool"/>
+		<parameter name="x2" description="x2 - вход 2" type="in" format="psbool"/>
+		<parameter name="x3" description="x3 - вход 3" type="in" format="psbool"/>
+		<parameter name="x4" description="x4 - вход 4" type="in" format="psbool"/>
+		<parameter name="x5" description="x5 - вход 5" type="in" format="psbool"/>
+		<parameter name="y" description="y - выходной параметр" type="out" format="psbool"/>
+	</header>
+	<header name="andn" description="Модуль 'Логический элемент И'" chart="Логические звенья" pointer="_lpS_andn" direct="_S_andn">
+		<parameter name="x" description="x - массив входных параметров" type="in" format="psbool" depended="n"/>
+		<parameter name="n" description="n - N-размерность массива входных параметров" type="tune" format="psint"/>
+		<parameter name="y" description="y - выходной параметр" type="out" format="psbool"/>
+	</header>
+	<header name="asmot" description="Модель перемещения механизма с шаговым двигателем" chart="Блоки моделирования объекта управления" pointer="_lpS_asmot" direct="_S_asmot">
+		<parameter name="RA0" description=" RA0 - движение вперёд" type="in" format="psbool"/>
+		<parameter name="RA1" description=" RA1 - движение назад" type="in" format="psbool"/>
+		<parameter name="XYvk" description="XYvk - координата мм от ИС" type="in" format="psfloat"/>
+		<parameter name="Vzvk" description="Vzvk - заданная скорость мм/с движения от ИС" type="in" format="psfloat"/>
+		<parameter name="Vm" description="Vm - Cкорость передвижения (мм/с)" type="tune" format="psfloat"/>
+		<parameter name="Tp" description="Tp - Тормозной путь мм" type="tune" format="psfloat"/>
+		<parameter name="Ter" description="Ter - Неисправности механизма" type="tune" format="psint"/>
+		<parameter name="KPav" description="KPav - координата пер.аварийного выключателя механизма мм" type="tune" format="psfloat"/>
+		<parameter name="KZav" description="KZav - координата зад.аварийного выключателя механизма мм" type="tune" format="psfloat"/>
+		<parameter name="KPv" description="KPv - координата пер. выключателя механизма мм" type="tune" format="psfloat"/>
+		<parameter name="KZv" description="KZv - координата зад. выключателя механизма мм" type="tune" format="psfloat"/>
+		<parameter name="Dlt" description="Dlt - зона срабатывания КВ механизма мм" type="tune" format="psfloat"/>
+		<parameter name="X0" description=" X0 - заданная координата механизма" type="tune" format="psfloat"/>
+		<parameter name="V0" description=" V0 - заданная скорость механизма" type="tune" format="psfloat"/>
+		<parameter name="X" description="X - координата механизма" type="out" format="psfloat"/>
+		<parameter name="Pav" description="Pav - Пер.аварийный выключатель механизма" type="out" format="psbool"/>
+		<parameter name="Zav" description="Zav - Зад.аварийный выключатель механизма" type="out" format="psbool"/>
+		<parameter name="Pv" description="Pv - Пер. выключатель механизма" type="out" format="psbool"/>
+		<parameter name="Zv" description="Zv - Зад. выключатель механизма" type="out" format="psbool"/>
+		<parameter name="V" description="Vt - текущая скорость механизма" type="out" format="psfloat"/>
+		<parameter name="Mup" description=" Mup - фактическое движение вперёд" type="out" format="psbool"/>
+		<parameter name="Mdw" description=" Mdw - фактическое движение назад" type="out" format="psbool"/>
+		<parameter name="Pav0" description=" - Пер.аварийный выключатель механизма" type="internal" format="psbool"/>
+		<parameter name="Zav0" description=" - Зад.аварийный выключатель механизма" type="internal" format="psbool"/>
+		<parameter name="Pv0" description=" - Пер. выключатель механизма" type="internal" format="psbool"/>
+		<parameter name="Zv0" description=" - Зад. выключатель механизма" type="internal" format="psbool"/>
+		<parameter name="RA00" description=" - последнее задание вперед" type="internal" format="psbool"/>
+		<parameter name="RA10" description=" - последнее задание назад" type="internal" format="psbool"/>
+		<parameter name="MyFirstEnterFlag" description="MyFirstEnterFlag" type="internal" format="psbool"/>
+		<parameter name="FirstEnterFlag" description="FirstEnterFlag" type="internal" format="psbool"/>
+	</header>
+	<header name="azbars" description="Модель реактора (точечная)" chart="Блоки моделирования объекта управления" pointer="_lpS_azbars" direct="_S_azbars">
+		<parameter name="Kbb" description="Kbb - координата ББ" type="in" format="psfloat"/>
+		<parameter name="Krb" description="Krb - координата РБ" type="in" format="psfloat"/>
+		<parameter name="Kis" description="Kis- координата ИС" type="in" format="psfloat"/>
+		<parameter name="N2" description="N2 - концентрация нейтронов другой АЗ" type="in" format="psfloat"/>
+		<parameter name="RIt" description="RIt - реактивность, вносимая облучаемыми образцами" type="in" format="psfloat"/>
+		<parameter name="BlowOut" description="BlowOut - Клапан 'Обдув АЗ' открыть (обесточить)" type="in" format="psbool"/>
+		<parameter name="NIatVU" description="NIatVU - Нейтронный Источник на ВУ" type="in" format="psbool"/>
+		<parameter name="IsANI" description="IsANI - Аварийный нейтронный источник установлен" type="in" format="psbool"/>
+		<parameter name="ImpINI" description="ImpINI - Запуск системы инициирования" type="in" format="psbool"/>
+		<parameter name="Lg" description="Lg - Среднее время генерации миллиона нейтронов" type="tune" format="psfloat"/>
+		<parameter name="Bz" description="Bz - доля запаздывающих нейтронов в общем количестве нейтронов" type="tune*/" format="psfloat"/>
+		<parameter name="AT" description="AT - Температурный коэффициент " type="tune" format="psfloat"/>
+		<parameter name="MT" description="MT - Масса топлива в АЗ(кГ)" type="tune" format="psfloat"/>
+		<parameter name="CT" description="CT - Удельная теплоёмкость топлива кДж/кГ*град" type="tune" format="psfloat"/>
+		<parameter name="EN" description="EN - Энергия 1 деления ядра  (Дж) * E^-13" type="tune" format="psfloat"/>
+		<parameter name="EVt" description="EVt - Кол-во делений/сек на 1 ватт * E^6" type="tune" format="psfloat"/>
+		<parameter name="Sani" description="Sani - мощность источника нейтронов при наличии АНИ" type="tune" format="psfloat"/>
+		<parameter name="Sno" description="Sno - мощность источника нейтронов без АНИ" type="tune" format="psfloat"/>
+		<parameter name="ABB0" description="ABB0 - Коэффициент-0 функции реактивности вносимой ББ" type="tune" format="psfloat"/>
+		<parameter name="ABB1" description="ABB1 - Коэффициент-1 функции реактивности вносимой ББ" type="tune" format="psfloat"/>
+		<parameter name="ARB0" description="ARB0 - Коэффициент-0 функции реактивности вносимой РБ" type="tune" format="psfloat"/>
+		<parameter name="ARB1" description="ARB1 - Коэффициент-1 функции реактивности вносимой РБ" type="tune" format="psfloat"/>
+		<parameter name="AIS0" description="AIS0 - Коэффициент-0 функции реактивности вносимой ИС" type="tune" format="psfloat"/>
+		<parameter name="AIS1" description="AIS1 - Коэффициент-1 функции реактивности вносимой ИС" type="tune" format="psfloat"/>
+		<parameter name="K11" description="K11 - Коэффициент 11 связи АЗ1,2" type="tune" format="psfloat"/>
+		<parameter name="K12" description="K12 - Коэффициент 12 связи АЗ1,2" type="tune" format="psfloat"/>
+		<parameter name="Tn0" description="Tn0 - нормальная температура АЗ" type="tune" format="psfloat"/>
+		<parameter name="RBlow" description="RBlow - конвекционное сопротивление при обдуве" type="tune" format="psfloat"/>
+		<parameter name="N0" description="N0 - Стартовая концентрация нейтронов" type="tune" format="psfloat"/>
+		<parameter name="R0" description="R0 - Стартовая реактивность" type="tune" format="psfloat"/>
+		<parameter name="T0" description="T0 - Стартовая температура" type="tune" format="psfloat"/>
+		<parameter name="N" description="N - концентрация нейтронов" type="out" format="psfloat"/>
+		<parameter name="Pn" description="Pn - поток нейтронов(нейтр/с)" type="out" format="psfloat"/>
+		<parameter name="R" description="R - текущая реактивность" type="out" format="psfloat"/>
+		<parameter name="T" description="T - текущая температура" type="out" format="psfloat"/>
+		<parameter name="IsBlow" description="IsBlow - Клапан 'Обдув АЗ' открыт (обесточен)" type="out" format="psbool"/>
+		<parameter name="Period" description="Period - период разгона РУ" type="out" format="psfloat"/>
+		<parameter name="Npn" description="Npn- мощность потока нейтронов(ватт)" type="out" format="psfloat"/>
+		<parameter name="C1" description="C1 - концентрация запаздывающих нейтронов 1-го типа" type="internal" format="psfloat"/>
+		<parameter name="C2" description="C2 - концентрация запаздывающих нейтронов 2-го типа" type="internal" format="psfloat"/>
+		<parameter name="C3" description="C3 - концентрация запаздывающих нейтронов 3-го типа" type="internal" format="psfloat"/>
+		<parameter name="C4" description="C4 - концентрация запаздывающих нейтронов 4-го типа" type="internal" format="psfloat"/>
+		<parameter name="C5" description="C5 - концентрация запаздывающих нейтронов 5-го типа" type="internal" format="psfloat"/>
+		<parameter name="C6" description="C6 - концентрация запаздывающих нейтронов 6-го типа" type="internal" format="psfloat"/>
+		<parameter name="N20" description="N20 - пред. концентрация нейтронов второй АЗ" type="internal" format="psfloat"/>
+		<parameter name="C0" description="*C0 - пред. концентрация запаздывающих нейтронов" type="internal" format="psfloat" size="6"/>
+		<parameter name="ImpINI0" description="ImpINI - Запуск системы инициирования(пред.)" type="internal" format="psbool"/>
+		<parameter name="MyFirstEnterFlag" description="MyFirstEnterFlag" type="internal" format="psbool"/>
+		<parameter name="FirstEnterFlag" description=" FirstEnterFlag" type="internal" format="psbool"/>
+	</header>
+	<header name="bol" description="Логический модуль 'Больше'" chart="Логические звенья" pointer="_lpS_bol" direct="_S_bol">
+		<parameter name="x1" description="X1" type="in" format="psfloat"/>
+		<parameter name="x2" description="X2" type="in" format="psfloat"/>
+		<parameter name="y" description="Y" type="out" format="psbool"/>
+	</header>
+	<header name="bolz" description="Логический модуль ' Больше ' ( с цел. входами )" chart="Логические звенья" pointer="_lpS_bolz" direct="_S_bolz">
+		<parameter name="x1" description="X1" type="in" format="psint"/>
+		<parameter name="x2" description="X2" type="in" format="psint"/>
+		<parameter name="y" description="Y" type="out" format="psbool"/>
+	</header>
+	<header name="charint" description="Преобр. символьной переменной в целочисленную" chart="Преобразователи типов" pointer="_lpS_charint" direct="_S_charint">
+		<parameter name="x" description="X" type="in" format="pschar"/>
+		<parameter name="y" description="Y" type="out" format="psint"/>
+	</header>
+	<header name="cnshd" description="модуль управления скоростью движения механизма с шаговым двигателем" chart="Модули СУПТ В-1000" pointer="_lpS_cnshd" direct="_S_cnshd">
+		<parameter name="KvitSam" description="KvitSam - квитирование самохода" type="in" format="psbool"/>
+		<parameter name="Xt" description="Xt - текущее  положение механизма мм" type="in" format="psfloat"/>
+		<parameter name="Xz" description="Xz - заданное положение механизма мм" type="in" format="psfloat"/>
+		<parameter name="UstK" description="UstK - введённая уставка по координате мм" type="in" format="psfloat"/>
+		<parameter name="Rr" description="Rr - есть команда" type="in" format="psbool"/>
+		<parameter name="BLDv" description="BlDv - Блокировка движения" type="in" format="psbool"/>
+		<parameter name="AvtSt" description="AvtSt - разрешение от автомат/шаг" type="in" format="psbool"/>
+		<parameter name="nspd_fw" description="nspd_fw - размерность шкалы движения вперёд" type="tune" format="psint"/>
+		<parameter name="Lt_fw" description="Lt_fw - шкала координат выбора скорости движения вперёд(мм)" type="tune" format="psfloat" depended="nspd_fw"/>
+		<parameter name="Vr_fw" description="Vr_fw - шкала скоростей движения вперёд(2-6)" type="tune" format="psint" depended="nspd_fw"/>
+		<parameter name="nspd_bw" description="nspd_bw - размерность шкалы движения назад" type="tune" format="psint"/>
+		<parameter name="Lt_bw" description="Lt_bw - шкала координат выбора скорости движения назад(мм)" type="tune" format="psfloat" depended="nspd_bw"/>
+		<parameter name="Vr_bw" description="Vr_bw - шкала скоростей движения назад(2-6)" type="tune" format="psint" depended="nspd_bw"/>
+		<parameter name="Dlt" description="Dlt - зона нечувствительности в мм (гр.)" type="tune" format="psfloat"/>
+		<parameter name="DltRet" description="DltRet - зона возврата в мм (гр.)" type="tune" format="psfloat"/>
+		<parameter name="Tim" description="Tim - время расширения зона нечувствительности до зоны возврата, сек" type="tune" format="psfloat"/>
+		<parameter name="Kpr" description="Kpr - коэффициент преобразования скорости из частоты в мм/сек" type="tune" format="psfloat"/>
+		<parameter name="Nz" description="Nz = 1 - механизм в зоне неч." type="out" format="psbool"/>
+		<parameter name="OnUst" description="OnUst = 1 - механизм на заданной уставке" type="out" format="psbool"/>
+		<parameter name="Xts" description="Xts - текущее  положение механизма мм" type="out" format="psfloat"/>
+		<parameter name="RA3" description=" RA3 - разрешение движения" type="out" format="psbool"/>
+		<parameter name="RA0" description=" RA0 - движение вперёд" type="out" format="psbool"/>
+		<parameter name="RA1" description=" RA1 - движение назад" type="out" format="psbool"/>
+		<parameter name="RA2" description=" RA2 - 0-й бит скорости" type="out" format="psbool"/>
+		<parameter name="RA4" description=" RA4 - 1-й бит скорости" type="out" format="psbool"/>
+		<parameter name="RA5" description=" RA5 - 2-й бит скорости" type="out" format="psbool"/>
+		<parameter name="RB3" description=" RB3 - паритет команды (нечет)" type="out*/" format="psbool"/>
+		<parameter name="Vz" description="Vz - заданная скорость механизма (мм/сек)" type="out" format="psfloat"/>
+		<parameter name="Ready" description="Ready - Готовность к управлению(0-движение,1-приехали, 2-нет команды,3-блокир)" type="out*/" format="pschar"/>
+		<parameter name="X0" description="текущая зона нечувствительности (Dlt/Du) в мм (гр.)" type="internal" format="psfloat"/>
+		<parameter name="t0" description="время нахождения в зоне возврата" type="internal" format="psfloat"/>
+		<parameter name="BLDv0" description="BlDv - Блокировка движения" type="internal" format="pschar"/>
+	</header>
+	<header name="cntch" description="Модуль индикации изменения длинного целого" chart="Динамические звенья" pointer="_lpS_cntch" direct="_S_cntch">
+		<parameter name="x" description="x - входной параметр" type="in" format="pslong"/>
+		<parameter name="y" description="y - выходной параметр" type="out" format="psbool"/>
+		<parameter name="x0" description="x0 - значение входного параметра на предыдущем шаге" type="internal" format="pslong"/>
+	</header>
+	<header name="decatron" description="Модуль отсчёта 10 сек" chart="Метрологическое обеспечение" pointer="_lpS_decatron" direct="_S_decatron">
+		<parameter name="pusk" description="pusk - разрешение выполнения программы" type="in" format="psbool"/>
+		<parameter name="Sek" description="Sek - до конца программы (секунд)" type="out" format="psint"/>
+		<parameter name="TimS" description="Время старта" type="internal" format="pslong"/>
+	</header>
+	<header name="drg" description="Модуль 'Двухпозиционное реле с гистерезисом', входной параметр вещественного типа, выходной параметр логического типа" chart="Нелинейные элементы" pointer="_lpS_drg" direct="_S_drg">
+		<parameter name="x" description="x - входной параметр" type="in" format="psfloat"/>
+		<parameter name="a" description="a - A-граница участка насыщения a" type="tune" format="psbool"/>
+		<parameter name="b" description="b - B-граница участка насыщения b" type="tune" format="psbool"/>
+		<parameter name="e" description="e - E-нижняя граница участка неоднозначности, ед.изм.пар." type="tune" format="psfloat"/>
+		<parameter name="f" description="f - F-верхняя граница участка неоднозначности, ед.изм.пар." type="tune" format="psfloat"/>
+		<parameter name="y" description="y - выходной параметр" type="out" format="psbool"/>
+		<parameter name="y1" description="y1 - внутренний параметр" type="internal" format="psbool"/>
+	</header>
+	<header name="enctkb" description="Модуль преобразования показаний энкодера в координату" chart="Модули СУПТ В-1000" pointer="_lpS_enctkb" direct="_S_enctkb">
+		<parameter name="Regim" description="Regim - режим работы-установка смещения/преобразование показаний" type="in" format="psbool"/>
+		<parameter name="Kt" description="Kt - текущее, известное(контрольное) положение механизма, мм" type="in" format="psfloat"/>
+		<parameter name="Nk" description="Nk - текущее показание энкодера, в тиках" type="in" format="pslong"/>
+		<parameter name="LeftBound" description="LB - нижняя граница доп.знач энкодера, в тиках" type="tune" format="pslong"/>
+		<parameter name="RightBound" description="RB - верхняя граница доп.знач энкодера, в тиках" type="tune" format="pslong"/>
+		<parameter name="C" description="C - коэффициент для преобразования тиков в мм" type="tune" format="psfloat"/>
+		<parameter name="KtSt" description="KtSt - Стартовое положение механизма, мм" type="tune" format="psfloat"/>
+		<parameter name="Nsm" description="Nsm - величина смещения координаты относительно 0 энкодера" type="tune" format="pslong"/>
+		<parameter name="Ytek" description="Ytek - текущее положение механизма с учетом смещения, мм (гр.)" type="out" format="psfloat"/>
+		<parameter name="Sam" description="Sam- признак настройки смещения" type="out" format="psbool"/>
+		<parameter name="bErr" description="bErr- признак наличия ошибки энкодера" type="out" format="psbool"/>
+		<parameter name="Nk0" description="Nk0 - предыдущее показание энкодера, в тиках" type="internal" format="pslong"/>
+		<parameter name="SetFlag" description="SetFlag - признак записи смещения в ЭСППЗУ" type="internal" format="psbool"/>
+		<parameter name="FirstEnterFlag" description="FirstEnterFlag" type="internal" format="psbool"/>
+	</header>
+	<header name="equz_p" description="Модуль 'Равно параметру'" chart="Логические звенья" pointer="_lpS_equz_p" direct="_S_equz_p">
+		<parameter name="x" description="x - входной параметр" type="in" format="psint"/>
+		<parameter name="p" description="p - настроечное значение" type="tune" format="psint"/>
+		<parameter name="y" description="y - признак равенства x=p" type="out" format="psbool"/>
+	</header>
+	<header name="fnapb" description="Модуль определения фактического направления движения механизма" chart="Модули Bars4" pointer="_lpS_fnapb" direct="_S_fnapb">
+		<parameter name="x" description="x - текущее  положение механизма в мм" type="in" format="psfloat"/>
+		<parameter name="xz" description="xz - заданное положение механизма в мм" type="in" format="psfloat"/>
+		<parameter name="CheckSpeed" description="CheckSpeed - признак измерения скорости" type="in" format="psbool"/>
+		<parameter name="KvitSam" description="KvitSam - квитирование самохода" type="in" format="psbool"/>
+		<parameter name="Dvig" description="Dvig - есть команда на движение" type="in" format="psbool"/>
+		<parameter name="Vz" description="Vz - заданная скорость, м/мин" type="in" format="psfloat"/>
+		<parameter name="Trz" description="Trz - время разгона механизма при переходе на новую скорость" type="tune" format="psfloat"/>
+		<parameter name="Delta" description="Delta - допустимое превышение скорости,м/мин" type="tune" format="psfloat"/>
+		<parameter name="MDelta" description="MDelta - допустимое уменьшение скорости,м/мин" type="tune" format="psfloat"/>
+		<parameter name="p" description="p - уставка опеределения самохода в мм(гр.)" type="tune" format="psfloat"/>
+		<parameter name="pl" description="pl - Минимальное перемещение для измерения скорости в мм(гр.)" type="tune" format="psfloat"/>
+		<parameter name="n" description="n - размерность массива мгновенных значений" type="tune" format="psint"/>
+		<parameter name="tz" description="tz - длительность переходного процесса остановки sek" type="tune" format="psfloat"/>
+		<parameter name="tnm" description="tnm - уставка срабатывания блокировки по недвижению sek" type="tune" format="psfloat"/>
+		<parameter name="tzZS" description="tzZS - время задержки самохода после достижения 0 скорости sek" type="tune" format="psfloat"/>
+		<parameter name="ToLeft" description="ToLeft - ход влево,вперёд,вверх,прот.часовой" type="out" format="psbool"/>
+		<parameter name="ToRight" description="ToRight - ход вправо,назад,вниз,по.часовой" type="out" format="psbool"/>
+		<parameter name="Speed" description="Speed - скорость перемещения" type="out" format="psfloat"/>
+		<parameter name="Shift" description="Shift - признак самохода" type="out" format="psbool"/>
+		<parameter name="NoMove" description="NoMove - блокировка по отсутствию перемещения" type="out" format="psbool"/>
+		<parameter name="Bl" description="Bl - блокировка по превышению скорости" type="out" format="psbool"/>
+		<parameter name="MBl" description="MBl - блокировка по отклонению скорости в меньшую сторону" type="out" format="psbool"/>
+		<parameter name="SrcPoint" description="SrcPoint - начальная точка из которой произошел самоход" type="out" format="psfloat"/>
+		<parameter name="xptr" description="указатель текущей позиции в массиве координат" type="internal" format="psint"/>
+		<parameter name="x0" description="x0 - массив мгновенных значений координат" type="internal" format="psfloat" depended="n"/>
+		<parameter name="tim0" description="tim0 - массив значений времени цикла" type="internal" format="psfloat" depended="n"/>
+		<parameter name="mcount" description="count - счетчик заполнения массива значений координат" type="internal" format="psint"/>
+		<parameter name="sumtim" description="sumtim - время в пути" type="internal" format="psfloat"/>
+		<parameter name="sumtakt" description="sumtim - время в пути" type="internal" format="psfloat"/>
+		<parameter name="StSpeed" description="StSpeed - стартовая скорость - с которой начинается изменение скорости" type="internal" format="psfloat"/>
+		<parameter name="Vz0" description="Vz0 - предыдущая заданная скорость" type="internal" format="psfloat"/>
+		<parameter name="flRazg" description="признак разгона/торможения" type="internal" format="psint"/>
+		<parameter name="DelSp" description="DelSp - время переключения скоростей" type="internal" format="psfloat"/>
+		<parameter name="z0" description="z0 - точка прекращения движения" type="internal" format="psfloat"/>
+		<parameter name="txZS" description="txZS" type="internal" format="psfloat"/>
+		<parameter name="tx" description="tx" type="internal" format="psfloat"/>
+		<parameter name="txd" description="txd" type="internal" format="psfloat"/>
+		<parameter name="txMBl" description="tx" type="internal" format="psfloat"/>
+		<parameter name="txBl" description="tx" type="internal" format="psfloat"/>
+		<parameter name="Speed0" description="Speed0 - предыдущее значение скорости перемещения" type="internal" format="psfloat"/>
+		<parameter name="xz0" description="xz0 - новое задание мм" type="internal" format="psfloat"/>
+		<parameter name="tz0" description="tz0 - время защиты от нового задания сек" type="internal" format="psfloat"/>
+		<parameter name="Shift0" description="Shift0 - признак самохода" type="internal" format="psbool"/>
+		<parameter name="ShCntlSp0" description="ShCntlSp0 - признак выдержки времени после достижения 0 скорости" type="internal" format="psbool"/>
+		<parameter name="ShiftControl" description="ShiftControl - признак самохода" type="internal" format="psbool"/>
+		<parameter name="FirstEnterFlag" description="FirstEnterFlag" type="internal" format="psbool"/>
+	</header>
+	<header name="fsubo" description="Модуль вычитания вещественных параметров" chart="Элементарные функции" pointer="_lpS_fsubo" direct="_S_fsubo">
+		<parameter name="x1" description="x1 - уменьшаемое" type="in" format="psfloat"/>
+		<parameter name="x2" description="x2 - вычитаемое" type="in" format="psfloat"/>
+		<parameter name="y" description="y - разность y=x1-x2" type="out" format="psfloat"/>
+	</header>
+	<header name="fsumo" description="Модуль 'Сумматор' вещественных параметров на два входа" chart="Элементарные функции" pointer="_lpS_fsumo" direct="_S_fsumo">
+		<parameter name="x1" description="x1 - первое слагаемое" type="in" format="psfloat"/>
+		<parameter name="x2" description="x2 - второе слагаемое" type="in" format="psfloat"/>
+		<parameter name="y" description="y - сумма y=x1+x2" type="out" format="psfloat"/>
+	</header>
+	<header name="fsumz" description="Модуль 'Сумматор' целочисленных параметров на два входа" chart="Элементарные функции" pointer="_lpS_fsumz" direct="_S_fsumz">
+		<parameter name="x1" description="x1 - первое слагаемое" type="in" format="psint"/>
+		<parameter name="x2" description="x2 - второе слагаемое" type="in" format="psint"/>
+		<parameter name="y" description="y - сумма y=x1+x2" type="out" format="psint"/>
+	</header>
+	<header name="geterr" description="Модуль выделения байта недостоверности параметров разных типов" chart="Алгоблоки стандартные" pointer="_lpS_geterr" direct="_S_geterr">
+		<parameter name="fx" description="fx - вещественный вход" type="in" format="psfloat"/>
+		<parameter name="lx" description="lx - длинный целочисленный вход" type="in" format="pslong"/>
+		<parameter name="ix" description="ix - целочисленный вход" type="in" format="psint"/>
+		<parameter name="cx" description="cx - байтовый вход" type="in" format="pschar"/>
+		<parameter name="efx" description="efx - байт недостоверности вещественного входа" type="out" format="pschar"/>
+		<parameter name="elx" description="elx - байт недостоверности длинного целочисленного входа" type="out" format="pschar"/>
+		<parameter name="eix" description="eix - байт недостоверности целочисленного входа" type="out" format="pschar"/>
+		<parameter name="ecx" description="ecx - байт недостоверности байтового входа" type="out" format="pschar"/>
+		<parameter name="lgx" description="lgx - признак недостоверности одного из входов" type="out" format="psbool"/>
+	</header>
+	<header name="inf" description="Модуль интерполяции нелинейных функций" chart="Нелинейные элементы" pointer="_lpS_inf" direct="_S_inf">
+		<parameter name="x" description="X" type="in" format="psfloat"/>
+		<parameter name="a" description="Ai, i=1..N -абсциссы опорных точек" type="tune" format="psfloat" depended="n"/>
+		<parameter name="b" description="Bi, i=1..N -ординаты опорных точек" type="tune" format="psfloat" depended="n"/>
+		<parameter name="n" description="N" type="tune" format="psint"/>
+		<parameter name="y" description="Y" type="out" format="psfloat"/>
+		<parameter name="ind" description="IND" type="out" format="psint"/>
+	</header>
+	<header name="irm" description="Модуль импульсного регулирования мощности реактора в логарифмическом диапазоне" chart="Алгоблоки стандартные" pointer="_lpS_irm" direct="_S_irm">
+		<parameter name="wz" description="wz - заданная мощность" type="in" format="psfloat"/>
+		<parameter name="wt" description="wt - текущая мощность" type="in" format="psfloat"/>
+		<parameter name="kz" description="kz - заданная c пульта координата ИМ" type="in" format="psfloat"/>
+		<parameter name="kt" description="kt - текущая координата ИМ" type="in" format="psfloat"/>
+		<parameter name="Tp" description="Tp - текущий период" type="in" format="psfloat"/>
+		<parameter name="Tm" description="Tm - текущая температура" type="in" format="psfloat"/>
+		<parameter name="Avt" description="Avt - разрешение работы регулятора" type="in" format="psbool"/>
+		<parameter name="Zn" description="Zn - зона нечувствительности, %" type="tune" format="psfloat"/>
+		<parameter name="MinDk" description="MinDk - минимальное изменение координаты, мм" type="tune" format="psfloat"/>
+		<parameter name="MaxKr" description="MaxKr - максимальная координата штока ИМ, мм" type="tune" format="psfloat"/>
+		<parameter name="MaxTime" description="MaxTime - предельное время работы на мощности более 100Вт, сек" type="tune" format="psfloat"/>
+		<parameter name="W1" description="W1 - коэффициент опережения для выхода на разгонную реактивность" type="tune" format="psfloat"/>
+		<parameter name="W2" description="W2 - коэффициент рассогласования по координате для разгонной реактивности" type="tune" format="psfloat"/>
+		<parameter name="W3" description="W3 - коэффициент опережения для выхода на 0-ю реактивность" type="tune" format="psfloat"/>
+		<parameter name="A1" description="A1 - коэффициент a1 ф-ции определения положения ИМ с 0-й реактивностью" type="tune" format="psfloat"/>
+		<parameter name="A0" description="A0 - коэффициент a0 ф-ции определения положения ИМ с 0-й реактивностью" type="tune" format="psfloat"/>
+		<parameter name="T1" description="T1 - коэффициент t1 ф-ции температурной корректировки ИМ" type="tune" format="psfloat"/>
+		<parameter name="T0" description="T0 - коэффициент t0 ф-ции температурной корректировки ИМ" type="tune" format="psfloat"/>
+		<parameter name="MT1" description="MT1 - коэффициент mt1 ф-ции прогноза темп. корр. положения ИМ от мощности" type="tune" format="psfloat"/>
+		<parameter name="MT0" description="MT0 - коэффициент mt0 ф-ции прогноза темп. корр. положения ИМ от мощности" type="tune" format="psfloat"/>
+		<parameter name="Nmin" description="Nmin - нижняя граница интервала мощности для измерения периода (ватт)" type="tune" format="psfloat"/>
+		<parameter name="Ktz" description="Ktz - текущее задание по координате ИМ" type="out" format="psfloat"/>
+		<parameter name="Tk" description="Tk - температурная корректировка координаты ИМ" type="out" format="psfloat"/>
+		<parameter name="Rct" description="Rct - рассчётная стартовая реактивность" type="out" format="psfloat"/>
+		<parameter name="kizm" description=" kizm - координата положения ИМ 0-й реактивности " type="out" format="psfloat"/>
+		<parameter name="Fin" description="Fin - завершение работы регулятора по предельному время работы на мощности" type="out" format="psbool"/>
+		<parameter name="t100" description=" - время работы на мощности более 100Вт, сек " type="out" format="psfloat"/>
+		<parameter name="Vf0" description=" - скорость изменения мощности " type="out" format="psfloat"/>
+		<parameter name="stage" description=" - этап 0 - не начинали, 53 - выход в 0 реакт,51-повышаем, 52 - уменьшаем, 54- на новое задание" type="out" format="psint"/>
+	</header>
+	<header name="ktoenc" description="Модуль преобразования координаты в показания энкодера" chart="Модули СУПТ В-1000" pointer="_lpS_ktoenc" direct="_S_ktoenc">
+		<parameter name="Xtek" description="Xtek - текущее положение механизма, мм" type="in" format="psfloat"/>
+		<parameter name="C" description="C - коэффициент для преобразования тиков в мм" type="tune" format="psfloat"/>
+		<parameter name="CNsm" description="CNsm - величина смещения, мм" type="tune" format="psfloat"/>
+		<parameter name="Ter" description="Ter - тип неисправности" type="tune" format="psint"/>
+		<parameter name="Ytek" description="Ytek - текущее положение механизма в тиках" type="out" format="pslong"/>
+		<parameter name="Mov" description="Mov - признак движения" type="out" format="psbool"/>
+		<parameter name="ClkW" description="ClkW - движение по часовой стрелке " type="out" format="psbool"/>
+		<parameter name="UnClkW" description="UnClkW - движение против часовой стрелки" type="out" format="psbool"/>
+		<parameter name="Enc" description="Enc - данные, которые должны быть считаны драйвером vencf" type="out" format="pslong"/>
+		<parameter name="Xtek0" description="Xtek0 - положение механизма на прошлом шаге, мм" type="internal" format="psfloat"/>
+		<parameter name="FirstEnterFlag" description="FirstEnterFlag" type="internal" format="psbool"/>
+	</header>
+	<header name="kvf" description="Контроль времени float" chart="Модули первичной обработки информации" pointer="_lpS_kvf" direct="_S_kvf">
+		<parameter name="x1" description="x - входной сигнал 1" type="in" format="psbool"/>
+		<parameter name="x2" description="x - входной сигнал 2" type="in" format="psbool"/>
+		<parameter name="intrv" description="intrv - длительность интервала отсчёта в секундах" type="in" format="psfloat"/>
+		<parameter name="y" description="y - интервал между сигналами х1 и х2 mc" type="out" format="psfloat"/>
+		<parameter name="imin" description="imin - минуты до конца отсчёта" type="out" format="psint"/>
+		<parameter name="isek" description="isek - секунды до конца отсчёта" type="out" format="psint"/>
+		<parameter name="x0" description="был приход сигнала x1" type="internal" format="psbool"/>
+		<parameter name="y0" description="интервал между сигналами х1 и х2" type="internal" format="psfloat"/>
+		<parameter name="FirstEnterFlag" description="FirstEnterFlag" type="internal" format="psbool"/>
+	</header>
+	<header name="lk" description="Модуль 'Логический клапан' для вещественного параметра" chart="Логические звенья" pointer="_lpS_lk" direct="_S_lk">
+		<parameter name="x" description="x - входной параметр" type="in" format="psfloat"/>
+		<parameter name="s" description="s - управляющий параметр" type="in" format="psbool"/>
+		<parameter name="y" description="y - выходной параметр" type="out" format="psfloat"/>
+	</header>
+	<header name="lkb" description="Модуль 'Логический клапан' для логического параметра" chart="Логические звенья" pointer="_lpS_lkb" direct="_S_lkb">
+		<parameter name="x" description="x - входной параметр" type="in" format="psbool"/>
+		<parameter name="s" description="s - управляющий параметр" type="in" format="psbool"/>
+		<parameter name="y" description="y - выходной параметр" type="out" format="psbool"/>
+	</header>
+	<header name="lkz" description="Модуль 'Логический клапан' для целочисленного параметра" chart="Логические звенья" pointer="_lpS_lkz" direct="_S_lkz">
+		<parameter name="x" description="х - входной параметр" type="in" format="psint"/>
+		<parameter name="s" description="s - управляющий параметр" type="in" format="psbool"/>
+		<parameter name="y" description="у - выходной параметр" type="out" format="psint"/>
+	</header>
+	<header name="lnn" description="Модуль вычисления натурального логарифма" chart="Элементарные функции" pointer="_lpS_lnn" direct="_S_lnn">
+		<parameter name="x" description="x - аргумент" type="in" format="psfloat"/>
+		<parameter name="y" description="y - выходной параметр y=ln(x)" type="out" format="psfloat"/>
+	</header>
+	<header name="ma" description="Модуль 'Мультиплексор арифметический' для вещественных параметров" chart="Логические звенья" pointer="_lpS_ma" direct="_S_ma">
+		<parameter name="x" description="x - массив входных параметров" type="in" format="psfloat" depended="n"/>
+		<parameter name="r" description="r - управляющий параметр" type="in" format="psint"/>
+		<parameter name="n" description="n - N-размерность массива x" type="tune" format="psint"/>
+		<parameter name="y" description="y - выходной параметр" type="out" format="psfloat"/>
+	</header>
+	<header name="maz" description="Мультиплексор арифметический целочисленный" chart="Логические звенья" pointer="_lpS_maz" direct="_S_maz">
+		<parameter name="x" description="x - массив входных сигналов" type="in" format="psint" depended="n"/>
+		<parameter name="r" description="r - управляющий сигнал" type="in" format="psint"/>
+		<parameter name="n" description="n - размерность входного массива" type="tune" format="psint"/>
+		<parameter name="y" description="y - выходной сигнал" type="out" format="psint"/>
+	</header>
+	<header name="ml" description="Модуль 'Мультиплексор логический' для вещественных параметров" chart="Логические звенья" pointer="_lpS_ml" direct="_S_ml">
+		<parameter name="x1" description="x1 - первый входной параметр" type="in" format="psfloat"/>
+		<parameter name="x2" description="x2 - второй входной параметр" type="in" format="psfloat"/>
+		<parameter name="s" description="s - управляющий параметр" type="in" format="psbool"/>
+		<parameter name="y" description="y - выходной параметр" type="out" format="psfloat"/>
+	</header>
+	<header name="mod1" description="Модуль 'Апериодическое звено первого порядка'" chart="Динамические звенья" pointer="_lpS_mod1" direct="_S_mod1">
+		<parameter name="x" description="x - входной параметр" type="in" format="psfloat"/>
+		<parameter name="k" description="k - Kф-коэффициент усиления" type="tune" format="psfloat"/>
+		<parameter name="tau" description="tau - Tф-постоянная времени, с" type="tune" format="psfloat"/>
+		<parameter name="y" description="y - выходной параметр" type="out" format="psfloat"/>
+		<parameter name="y0" description="y0 - внутренний параметр" type="internal" format="psfloat"/>
+	</header>
+	<header name="newstage" description="Модуль сигнализации завершения этапа" chart="Нелинейные элементы" pointer="_lpS_newstage" direct="_S_newstage">
+		<parameter name="caz1" description="сaz1-Разрешено управление механизмом АЗ1" type="in" format="psbool"/>
+		<parameter name="caz2" description="сaz2-Разрешено управление механизмом АЗ2" type="in" format="psbool"/>
+		<parameter name="fin1" description="fin1-завершено движение механизма АЗ1" type="in" format="psbool"/>
+		<parameter name="fin2" description="fin2-завершено движение механизма АЗ2" type="in" format="psbool"/>
+		<parameter name="Let" description="Let-Разрешить новый этап" type="out" format="psbool"/>
+	</header>
+	<header name="nocnm" description="Модуль определения состояния механизма с неизвестным управлением" chart="Модули СУПТ В-1000" pointer="_lpS_nocnm" direct="_S_nocnm">
+		<parameter name="Pv" description="Pv - Пер. выключатель механизма" type="in" format="psbool"/>
+		<parameter name="Zv" description="Zv - Зад. выключатель механизма" type="in" format="psbool"/>
+		<parameter name="Mup" description=" Mup - фактическое движение вперёд" type="out" format="psbool"/>
+		<parameter name="Mdw" description=" Mdw - фактическое движение назад" type="out" format="psbool"/>
+		<parameter name="Ready" description="Ready - Готовность к управлению(0-движение,1-приехали, 2-нет команды,3-блокир)" type="out*/" format="psint"/>
+		<parameter name="Pv0" description=" - Пер. выключатель механизма" type="internal" format="psbool"/>
+		<parameter name="Zv0" description=" - Зад. выключатель механизма" type="internal" format="psbool"/>
+		<parameter name="MyFirstEnterFlag" description="MyFirstEnterFlag" type="internal" format="psbool"/>
+		<parameter name="FirstEnterFlag" description="FirstEnterFlag" type="internal" format="psbool"/>
+	</header>
+	<header name="noto" description="Модуль 'Логический элемент НЕ'" chart="Логические звенья" pointer="_lpS_noto" direct="_S_noto">
+		<parameter name="x" description="x - входной параметр" type="in" format="psbool"/>
+		<parameter name="y" description="y - выходной параметр" type="out" format="psbool"/>
+	</header>
+	<header name="ocham" description="Модуль вычисления нейтронного потока" chart="Метрологическое обеспечение" pointer="_lpS_ocham" direct="_S_ocham">
+		<parameter name="Ch1k" description="Ch1 - частота импульсов от СНМ-11" type="in" format="psfloat"/>
+		<parameter name="Ch2k" description="Ch2 - частота импульсов от КНК15-1" type="in" format="psfloat"/>
+		<parameter name="Ch3k" description="Ch2 - частота импульсов от КНК53М" type="in" format="psfloat"/>
+		<parameter name="YAz2" description="YAz2 - y-координата АЗ2 мм" type="in" format="psfloat"/>
+		<parameter name="XAz" description="XAz - x-координата АЗ cм" type="tune" format="psfloat"/>
+		<parameter name="YAz1" description="YAz1 - y-координата АЗ1 cм" type="tune" format="psfloat"/>
+		<parameter name="Reff" description="Reff - эффективный радиус РУ cм" type="tune" format="psfloat"/>
+		<parameter name="Ak1" description="Ak1 - калибр. коэфф-1. преобраз. частоты камеры СНМ-11 в нейтр. поток" type="tune" format="psfloat"/>
+		<parameter name="Bk1" description="Bk1 - калибр. коэфф-2. преобраз. частоты камеры СНМ-11 в нейтр. поток" type="tune" format="psfloat"/>
+		<parameter name="Ak2" description="Ak2 - калибр. коэфф-1. преобраз. частоты камеры КНК15-1 в нейтр. поток" type="tune" format="psfloat"/>
+		<parameter name="Bk2" description="Bk2 - калибр. коэфф-2. преобраз. частоты камеры КНК15-1 нейтр. поток" type="tune" format="psfloat"/>
+		<parameter name="Ak3" description="Ak3 - калибр. коэфф-1. преобраз. частоты камеры КНК53М в нейтр. поток" type="tune" format="psfloat"/>
+		<parameter name="Bk3" description="Bk3 - калибр. коэфф-2. преобраз. частоты камеры КНК53М в нейтр. поток" type="tune" format="psfloat"/>
+		<parameter name="XCm1" description="XCm1 - x-координата камеры СНМ-11 см" type="tune" format="psfloat"/>
+		<parameter name="YCm1" description="YCm1 - y-координата камеры СНМ-11 см" type="tune" format="psfloat"/>
+		<parameter name="XCm2" description="XCm2 - x-координата камеры КНК15-1 см" type="tune" format="psfloat"/>
+		<parameter name="YCm2" description="YCm2 - y-координата камеры КНК15-1 см" type="tune" format="psfloat"/>
+		<parameter name="XCm3" description="XCm3 - x-координата камеры КНК53М см" type="tune" format="psfloat"/>
+		<parameter name="YCm3" description="YCm3 - y-координата камеры КНК53М см" type="tune" format="psfloat"/>
+		<parameter name="type" description="type - тип камеры СНМ-11 1- для АЗ1, 2- для аз2, )2 РПУ " type="tune" format="pschar"/>
+		<parameter name="Kpr1k" description="Kpr1 - коэфф. преобразования частота-)нейтр/с СНМ-11 " type="tune" format="psfloat"/>
+		<parameter name="Kpr2k" description="Kpr2 - коэфф. преобразования частота-)нейтр/с КНК15-1" type="tune" format="psfloat"/>
+		<parameter name="Kpr3k" description="Kpr3 - коэфф. преобразования частота-)нейтр/с КНК53М" type="tune" format="psfloat"/>
+		<parameter name="Kprm" description="Kprm - коэфф. преобразования поток-)мощность" type="tune" format="psfloat"/>
+		<parameter name="Np" description="Np - поток нейтронов от РУ  (нейтр/с)" type="out" format="psfloat"/>
+		<parameter name="Nm" description="Nm - мощность РУ" type="out" format="psfloat"/>
+		<parameter name="Flerr" description="Err - флаг неисправности канала" type="out" format="psbool"/>
+		<parameter name="Np1" description="Np1 - поток нейтронов от 1 камеры  (нейтр/с)" type="out" format="psfloat"/>
+		<parameter name="Np2" description="Np2 - поток нейтронов от 2 камеры  (нейтр/с)" type="out" format="psfloat"/>
+		<parameter name="Np3" description="Np3 - поток нейтронов от 3 камеры  (нейтр/с)" type="out" format="psfloat"/>
+		<parameter name="Nkm" description="Nkm - ведущая камера 1-СНМ-11,2-КНК-15М-1,3-КНК-53М,0-нет ведущей" type="out" format="psint"/>
+		<parameter name="Nk" description="Nk - ведущая камера" type="internal" format="psint"/>
+	</header>
+	<header name="or2" description="Модуль 'Логический элемент ИЛИ на 2 входа'" chart="Логические звенья" pointer="_lpS_or2" direct="_S_or2">
+		<parameter name="x1" description="x1 - вход 1" type="in" format="psbool"/>
+		<parameter name="x2" description="x2 - вход 2" type="in" format="psbool"/>
+		<parameter name="y" description="y - выходной параметр" type="out" format="psbool"/>
+	</header>
+	<header name="or3" description="Модуль 'Логический элемент ИЛИ на 3 входа'" chart="Логические звенья" pointer="_lpS_or3" direct="_S_or3">
+		<parameter name="x1" description="x1 - вход 1" type="in" format="psbool"/>
+		<parameter name="x2" description="x2 - вход 2" type="in" format="psbool"/>
+		<parameter name="x3" description="x3 - вход 3" type="in" format="psbool"/>
+		<parameter name="y" description="y - выходной параметр" type="out" format="psbool"/>
+	</header>
+	<header name="or4" description="Модуль 'Логический элемент И на 4 входа'" chart="Логические звенья" pointer="_lpS_or4" direct="_S_or4">
+		<parameter name="x1" description="x1 - вход 1" type="in" format="psbool"/>
+		<parameter name="x2" description="x2 - вход 2" type="in" format="psbool"/>
+		<parameter name="x3" description="x3 - вход 3" type="in" format="psbool"/>
+		<parameter name="x4" description="x4 - вход 4" type="in" format="psbool"/>
+		<parameter name="y" description="y - выходной параметр" type="out" format="psbool"/>
+	</header>
+	<header name="or5" description="Модуль 'Логический элемент И на 4 входа'" chart="Логические звенья" pointer="_lpS_or5" direct="_S_or5">
+		<parameter name="x1" description="x1 - вход 1" type="in" format="psbool"/>
+		<parameter name="x2" description="x2 - вход 2" type="in" format="psbool"/>
+		<parameter name="x3" description="x3 - вход 3" type="in" format="psbool"/>
+		<parameter name="x4" description="x4 - вход 4" type="in" format="psbool"/>
+		<parameter name="x5" description="x5 - вход 5" type="in" format="psbool"/>
+		<parameter name="y" description="y - выходной параметр" type="out" format="psbool"/>
+	</header>
+	<header name="orn" description="Модуль 'Логический элемент ИЛИ'" chart="Логические звенья" pointer="_lpS_orn" direct="_S_orn">
+		<parameter name="x" description="x - массив входных параметров" type="in" format="psbool" depended="n"/>
+		<parameter name="n" description="n - N-размерность массива x" type="tune" format="psint"/>
+		<parameter name="y" description="y - выходной параметр" type="out" format="psbool"/>
+	</header>
+	<header name="ornc" description="Логический модуль 'ИЛИ' с индикацией входов" chart="Логические звенья" pointer="_lpS_ornc" direct="_S_ornc">
+		<parameter name="x" description="X-вход" type="in" format="psbool" depended="n"/>
+		<parameter name="n" description="N-число входов" type="tune" format="psint"/>
+		<parameter name="y" description="Y(лог)" type="out" format="psbool"/>
+		<parameter name="SetInd" description="SetInd - индикатор состояния входов" type="out" format="pschar"/>
+	</header>
+	<header name="orni" description="Логический модуль 'ИЛИ' с индикацией состояния входов" chart="Логические звенья" pointer="_lpS_orni" direct="_S_orni">
+		<parameter name="x" description="x - массив входных сигналов" type="in" format="psbool" depended="n"/>
+		<parameter name="n" description="n - размерность массива входных сигналов" type="tune" format="psint"/>
+		<parameter name="y" description="y - выходной сигнал" type="out" format="psbool"/>
+		<parameter name="SetInd" description="SetInd - индикатор состояния входов" type="out" format="pslong"/>
+	</header>
+	<header name="orrsim" description="Модель перемещения ОРР с шаговым двигателем" chart="Блоки моделирования объекта управления" pointer="_lpS_orrsim" direct="_S_orrsim">
+		<parameter name="RA0" description=" RA0 - движение вперёд" type="in" format="psbool"/>
+		<parameter name="RA1" description=" RA1 - движение назад" type="in" format="psbool"/>
+		<parameter name="RA2" description=" RA2 - 0-й бит скорости" type="in" format="psbool"/>
+		<parameter name="RA3" description=" RA3 - разрешение движения" type="in" format="psbool"/>
+		<parameter name="RA4" description=" RA4 - 1-й бит скорости" type="in" format="psbool"/>
+		<parameter name="RA5" description=" RA5 - 2-й бит скорости" type="in" format="psbool"/>
+		<parameter name="RB3" description=" RB3 - паритет команды (нечет)" type="in*/" format="psbool"/>
+		<parameter name="Klo" description=" Klo - Клапан «Сброс ОРР» открыть (обесточить)" type="in*/" format="psbool"/>
+		<parameter name="Klz" description=" Klz - Клапан «Подъём ОРР» открыть (обесточить)" type="in*/" format="psbool"/>
+		<parameter name="EMo" description=" EMo - Обесточить электромагнит ОРР" type="in*/" format="psbool"/>
+		<parameter name="Xk" description="Xk - координата ОРР мм от ИС" type="in" format="psfloat"/>
+		<parameter name="Shk" description="Shk - координата штока ОРР мм от ИС" type="in" format="psfloat"/>
+		<parameter name="IRV" description="XV - заданная скорость мм/с движения ОРР от ИС" type="in" format="psfloat"/>
+		<parameter name="IShV" description="ShV - заданная скорость шагов/с движения штока ОРР от ИС" type="in" format="psfloat"/>
+		<parameter name="IsMg" description=" IsMg - Флаг наличия магнита на штоке ОРР" type="tune" format="psbool"/>
+		<parameter name="Vr" description="*Vm - массив скоростей движения (шагов в секунду)" type="tune" format="psfloat"/>
+		<parameter name="Kpr" description="Kpr - Коэффициент преобразования частоты двигателя в скорость ОРР мм/с" type="tune" format="psfloat"/>
+		<parameter name="Pup" description="Pup - давление в системе на подъем " type="tune" format="psfloat"/>
+		<parameter name="Pdw" description="Pdw - давление в системе на сброс" type="tune" format="psfloat"/>
+		<parameter name="Ldemp" description="Ldemp - расстояние включения масляного демпфера" type="tune" format="psfloat"/>
+		<parameter name="Tau" description="Tau - постоянная времени масляного демпфера(сек)" type="tune" format="psfloat"/>
+		<parameter name="Aps" description="Aps - ускорение сброса от пневматики - g (мм/с^2)" type="tune" format="psfloat"/>
+		<parameter name="Ter" description="Ter - Неисправности ОРР" type="tune" format="psint"/>
+		<parameter name="KPpv" description="KPpv - координата промежуточного путевого выключателя ОРР мм" type="tune" format="psfloat"/>
+		<parameter name="KPav" description="KPav - координата пер.аварийного выключателя ОРР мм" type="tune" format="psfloat"/>
+		<parameter name="KZav" description="KZav - координата зад.аварийного выключателя ОРР мм" type="tune" format="psfloat"/>
+		<parameter name="Dlt" description="Dlt - зона срабатывания КВ механизма мм" type="tune" format="psfloat"/>
+		<parameter name="X0" description="X0 - координата ОРР" type="tune" format="psfloat"/>
+		<parameter name="Sh0" description="Sh0 - координата штока ОРР" type="tune" format="psfloat"/>
+		<parameter name="RV0" description="V0 - текущая скорость ОРР" type="tune" format="psfloat"/>
+		<parameter name="ShV0" description="V0 - текущая скорость штока ОРР" type="tune" format="psfloat"/>
+		<parameter name="X" description="X - координата ОРР" type="out" format="psfloat"/>
+		<parameter name="Sh" description="Sh - координата штока ОРР" type="out" format="psfloat"/>
+		<parameter name="Ppv" description="Ppv - Промежуточный путевой выключатель ОРР(80 мм)" type="out" format="psbool"/>
+		<parameter name="Pav" description="Pav - Пер.аварийный выключатель ОРР(ВУ)" type="out" format="psbool"/>
+		<parameter name="Zav" description="Zav - Зад.аварийный выключатель ОРР(НУ)" type="out" format="psbool"/>
+		<parameter name="RV" description="RV - текущая скорость ОРР мм/с" type="out" format="psfloat"/>
+		<parameter name="ShV" description="ShV - текущая скорость штока ОРР мм/с" type="out" format="psfloat"/>
+		<parameter name="SKlo" description="SKlo - Клапан «Сброс ОРР» открыт (обесточен)" type="out" format="psbool"/>
+		<parameter name="SKlz" description="SKlz - Клапан «Подъём ОРР» открыт (обесточен)" type="out" format="psbool"/>
+		<parameter name="SEMo" description="SEMo - Обесточен электромагнит ОРР" type="out" format="psbool"/>
+		<parameter name="SZMo" description="SZMo - зацеплен электромагнит ОРР" type="out" format="psbool"/>
+		<parameter name="Ppv0" description="Ppv0 - Промежуточный путевой выключатель ОРР(80 мм)" type="internal" format="psbool"/>
+		<parameter name="Pav0" description="Pav0 - Пер.аварийный выключатель ОРР" type="internal" format="psbool"/>
+		<parameter name="Zav0" description="Zav0 - Зад.аварийный выключатель ОРР" type="internal" format="psbool"/>
+		<parameter name="RA00" description="RA00 - последнее задание вперед" type="internal" format="psbool"/>
+		<parameter name="RA10" description="RA10 - последнее задание назад" type="internal" format="psbool"/>
+		<parameter name="RA50" description="Ra50 - последнее задание скорости" type="internal" format="pschar"/>
+		<parameter name="fls" description=" fls - флаг одношагового режима" type="internal" format="psbool"/>
+		<parameter name="flp" description=" flp - флаг сброса/подъёма от пневматики (0 - без, 1-сброс, 2-подъём)" type="internal" format="psbool"/>
+		<parameter name="MyFirstEnterFlag" description="MyFirstEnterFlag" type="internal" format="psbool"/>
+		<parameter name="FirstEnterFlag" description="FirstEnterFlag" type="internal" format="psbool"/>
+	</header>
+	<header name="ovb1" description="Модуль формирования одиночных импульсов (одновибратор) при постоянном входном параметре" chart="Алгоблоки стандартные" pointer="_lpS_ovb1" direct="_S_ovb1">
+		<parameter name="x" description="x - входной параметр" type="in" format="psbool"/>
+		<parameter name="tz" description="tz - ширина импульса, 10-ки мс" type="tune" format="psint"/>
+		<parameter name="y" description="y - выходной параметр" type="out" format="psbool"/>
+		<parameter name="tx" description="tx - внутренний параметр" type="internal" format="psint"/>
+	</header>
+	<header name="ovbs" description="Модуль формирования одиночных импульсов (одновибратор) при постоянном входном параметре" chart="Алгоблоки стандартные" pointer="_lpS_ovbs" direct="_S_ovbs">
+		<parameter name="x" description="x - входной параметр" type="in" format="psbool"/>
+		<parameter name="tz" description="tz - ширина импульса, sek" type="tune" format="psfloat"/>
+		<parameter name="y" description="y - выходной параметр" type="out" format="psbool"/>
+		<parameter name="tx" description="tx - внутренний параметр" type="internal" format="psfloat"/>
+	</header>
+	<header name="period" description="Модуль вычисления периода разгона реактора" chart="Метрологическое обеспечение" pointer="_lpS_period" direct="_S_period">
+		<parameter name="Np" description="Np - мощность РУ (ватт)" type="in" format="psfloat"/>
+		<parameter name="Flerr" description="Err - флаг неисправности канала" type="in" format="psbool"/>
+		<parameter name="n" description="n - размерность массива усреднения потока" type="tune" format="psint"/>
+		<parameter name="TiStep" description="TiStep - шаг измерения периода (сек)" type="tune" format="psfloat"/>
+		<parameter name="Tmax" description="Tmax - предельное время ожидания роста потока (сек)" type="tune" format="psfloat"/>
+		<parameter name="Nmin" description="Nmin - нижняя граница интервала мощности для измерения периода (ватт)" type="tune" format="psfloat"/>
+		<parameter name="Period" description="Per - Период разгона РУ" type="out" format="psfloat"/>
+		<parameter name="tst" description="- массив времени фиксации стартовой мощности" type="internal" format="psfloat" depended="n"/>
+		<parameter name="trz" description="- массив времени фиксации очередного периода" type="internal" format="psfloat" depended="n"/>
+		<parameter name="N1" description="- массив значения мощности в начале замера" type="internal" format="psfloat" depended="n"/>
+		<parameter name="N2" description="- массив значения мощности в конце замера" type="internal" format="psfloat" depended="n"/>
+		<parameter name="Period0" description="Per - Период разгона РУ" type="internal" format="psfloat"/>
+		<parameter name="MyFirstEnterFlag" description=" FirstEnterFlag" type="internal" format="psbool"/>
+	</header>
+	<header name="provsbr" description="Модуль выполнения программы проверок" chart="Метрологическое обеспечение" pointer="_lpS_provsbr" direct="_S_provsbr">
+		<parameter name="pusk" description="pusk - разрешение выполнения программы" type="in" format="psbool"/>
+		<parameter name="kvit" description="kvit - флаг запуска программы с начала" type="in" format="psbool"/>
+		<parameter name="rzINI" description="sbINI - результат проверки ИНИ" type="in" format="psbool"/>
+		<parameter name="rzVuIS" description="sbVuIS - результат проверки сброса от ВУ ИС" type="in" format="psbool"/>
+		<parameter name="rz2UR" description="sb2UR - результат проверки сброса от 2УР" type="in" format="psbool"/>
+		<parameter name="rzNupIS" description="sbNupIS - результат проверки сброса от НУП ИС" type="in" format="psbool"/>
+		<parameter name="rzVuRB" description="sbVuRB - результат проверки сброса от ВУ РБ" type="in" format="psbool"/>
+		<parameter name="zvINI" description="sbINI - завершение проверки ИНИ" type="in" format="psbool"/>
+		<parameter name="zvVuIS" description="sbVuIS - завершение проверки сброса от ВУ ИС" type="in" format="psbool"/>
+		<parameter name="zv2UR" description="sb2UR - завершение проверки сброса от 2УР" type="in" format="psbool"/>
+		<parameter name="zvNupIS" description="sbNupIS - завершение проверки сброса от НУП ИС" type="in" format="psbool"/>
+		<parameter name="zvVuRB" description="sbVuRB - завершение проверки сброса от ВУ РБ" type="in" format="psbool"/>
+		<parameter name="np" description="np - размер массива значений параметров программы" type="tune" format="psint"/>
+		<parameter name="Tpr" description="Tpr - время начала проверки мс от старта программы" type="tune" format="psfloat" depended="np"/>
+		<parameter name="type" description="type - тип проверки 1-ини,2-ву ис,3-2ур,4-нуп ис,5-ву рб, 6-конец" type="tune" format="pschar" depended="np"/>
+		<parameter name="FinPr" description="FinPr - конец программы" type="out" format="psbool"/>
+		<parameter name="Min" description="Min - до конца программы (минут)" type="out" format="psint"/>
+		<parameter name="Sek" description="Sek - до конца программы (секунд)" type="out" format="psint"/>
+		<parameter name="ErrPr" description="ErrPr - Приостановка программы по ошибке" type="out" format="psbool"/>
+		<parameter name="sbINI" description="sbINI - запуск проверки ИНИ" type="out" format="psbool"/>
+		<parameter name="sbVuIS" description="sbVuIS - запуск проверки сброса от ВУ ИС" type="out" format="psbool"/>
+		<parameter name="sb2UR" description="sb2UR - запуск проверки сброса от 2УР" type="out" format="psbool"/>
+		<parameter name="sbNupIS" description="sbNupIS - запуск проверки сброса от НУП ИС" type="out" format="psbool"/>
+		<parameter name="sbVuRB" description="sbVuRB - запуск проверки сброса от ВУ РБ" type="out" format="psbool"/>
+		<parameter name="Step" description=" - текущий шаг программы" type="internal" format="psint"/>
+		<parameter name="rz" description="- результат проверки 0-не запускалась, 1-запущена, 2-приостановлена, 3-успешно завершена, 4-ошибка" type="internal" format="pschar" depended="np"/>
+		<parameter name="TimS" description="Время от старта программы" type="internal" format="psfloat"/>
+		<parameter name="FinPr0" description="FinPr - конец программы" type="internal" format="psbool"/>
+		<parameter name="ErrPr0" description="ErrPr - Приостановка программы по ошибке" type="internal" format="psbool"/>
+		<parameter name="sbINI0" description="sbINI - запуск проверки ИНИ" type="internal" format="psbool"/>
+		<parameter name="sbVuIS0" description="sbVuIS - запуск проверки сброса от ВУ ИС" type="internal" format="psbool"/>
+		<parameter name="sb2UR0" description="sb2UR - запуск проверки сброса от 2УР" type="internal" format="psbool"/>
+		<parameter name="sbNupIS0" description="sbNupIS - запуск проверки сброса от НУП ИС" type="internal" format="psbool"/>
+		<parameter name="sbVuRB0" description="sbVuRB - запуск проверки сброса от ВУ РБ" type="internal" format="psbool"/>
+		<parameter name="MyFirstEnterFlag" description=" " type="internal" format="psbool"/>
+	</header>
+	<header name="react" description="Алгоритм расчёта реактивности реактора по периоду разгона" chart="Модули первичной обработки информации" pointer="_lpS_react" direct="_S_react">
+		<parameter name="t" description="t-период разгона" type="in" format="psfloat"/>
+		<parameter name="r" description="r - текущая реактивность РУ" type="out" format="psfloat"/>
+	</header>
+	<header name="rs" description="Модуль 'RS-триггер' с приоритетом сброса" chart="Логические звенья" pointer="_lpS_rs" direct="_S_rs">
+		<parameter name="r" description="r - сигнал сброса R" type="in" format="psbool"/>
+		<parameter name="s" description="s - входной сигнал S" type="in" format="psbool"/>
+		<parameter name="q" description="q - выходной параметр" type="out" format="psbool"/>
+		<parameter name="nq" description="nq - инверсия q" type="out" format="psbool"/>
+		<parameter name="q0" description="q0 - внутренний параметр" type="internal" format="psbool"/>
+	</header>
+	<header name="rsfn" description="Модуль 'rsfn-триггер' с приоритетом сброса" chart="Логические звенья" pointer="_lpS_rsfn" direct="_S_rsfn">
+		<parameter name="r" description="r - сигнал сброса R" type="in" format="psbool"/>
+		<parameter name="s" description="s - входной сигнал S" type="in" format="psfloat"/>
+		<parameter name="q" description="q - выходной параметр" type="out" format="psfloat"/>
+		<parameter name="q0" description="q0 - внутренний параметр" type="internal" format="psfloat"/>
+	</header>
+	<header name="rsu" description="Модуль 'rsu-триггер' с приоритетом сброса, ненулевой сигнал фиксируется" chart="Логические звенья" pointer="_lpS_rsu" direct="_S_rsu">
+		<parameter name="ERROR" description="ERROR" type="ERROR" format="/*"/>
+		<parameter name="r" description="r - сигнал сброса R" type="in" format="psbool"/>
+		<parameter name="s" description="s - входной сигнал S" type="in" format="pslong"/>
+		<parameter name="q" description="q - выходной параметр" type="out" format="pslong"/>
+		<parameter name="q0" description="q0 - внутренний параметр" type="internal" format="pslong"/>
+	</header>
+	<header name="rsun" description="Модуль 'rsun-триггер' с приоритетом сброса" chart="Логические звенья" pointer="_lpS_rsun" direct="_S_rsun">
+		<parameter name="r" description="r - сигнал сброса R" type="in" format="psbool"/>
+		<parameter name="s" description="s - входной сигнал S" type="in" format="pslong"/>
+		<parameter name="q" description="q - выходной параметр" type="out" format="pslong"/>
+		<parameter name="qi" description="qi - выходной параметр" type="out" format="psint"/>
+		<parameter name="q0" description="q0 - внутренний параметр" type="internal" format="pslong"/>
+	</header>
+	<header name="samhd" description="Модуль управления пневматикой и двигателем " chart="Алгоблоки стандартные" pointer="_lpS_samhd" direct="_S_samhd">
+		<parameter name="KvitSam" description="KvitSam - квитирование самохода" type="in" format="psbool"/>
+		<parameter name="BLDv" description="BlDv - Блокировка движения вперёд" type="in" format="psbool"/>
+		<parameter name="BLVz" description="BlVz - Блокировка движения назад" type="in" format="psbool"/>
+		<parameter name="DvUp" description="DvUp - есть команда на движение вперёд" type="in" format="psbool"/>
+		<parameter name="DvDw" description="DvDw - есть команда на движение назад" type="in" format="psbool"/>
+		<parameter name="FDvUp" description="FDvUp - факт. движение вперёд" type="in" format="psbool"/>
+		<parameter name="FDvDw" description="FvDw - факт. движение назад" type="in" format="psbool"/>
+		<parameter name="Pkv" description="Pkv - передний конечный выключатель" type="in" format="psbool"/>
+		<parameter name="Pkav" description="Pkav - передний конечный аварийный выключатель" type="in" format="psbool"/>
+		<parameter name="Zkv" description="Zkv - задний конечный выключатель" type="in" format="psbool"/>
+		<parameter name="Zkav" description="Zkav - задний конечный аварийный выключатель" type="in" format="psbool"/>
+		<parameter name="TypeDev" description="TypeDev - тип механизма 0-двигатель, 1-пневмоклапан, 2-двиг. с координатой " type="tune" format="pschar"/>
+		<parameter name="tzNm" description="tzNm - время задержки сигнализации недвижения(дес.мс)" type="tune" format="psfloat"/>
+		<parameter name="tzSm" description="tzSm - время задержки сигнализации самохода (дес.мс)" type="tune" format="psfloat"/>
+		<parameter name="tzLd" description="tzLd - время задержки сигнализации превышения времени движения (дес.мс)" type="tune" format="psfloat"/>
+		<parameter name="Shift" description="Shift - признак самохода" type="out" format="psbool"/>
+		<parameter name="NoMove" description="NoMove - блокировка по отсутствию перемещения" type="out" format="psbool"/>
+		<parameter name="BadMove" description="BadMove - признак ошибки в направлении перемещения" type="out" format="psbool"/>
+		<parameter name="LongMove" description="LongMove - признак превышения времени перемещения" type="out" format="psbool"/>
+		<parameter name="UpMove" description="UpMove - Сигнал перемещения вверх,вперед,открыть" type="out*/" format="psbool"/>
+		<parameter name="DwMove" description="DwMove - Сигнал перемещения вниз,назад,закрыть" type="out*/" format="psbool"/>
+		<parameter name="FUpMove" description="FUpMove - Факт перемещение вверх,вперед,открыть" type="out*/" format="psbool"/>
+		<parameter name="FDwMove" description="FDwMove - Факт перемещение вниз,назад,закрыть" type="out*/" format="psbool"/>
+		<parameter name="Ready" description="Ready - Готовность к управлению(0-движение,1-приехали, 2-нет команды,3-блокир)" type="out*/" format="psint"/>
+		<parameter name="FinMove" description="FoutMove - признак завершения перемещения" type="out*/" format="psbool"/>
+		<parameter name="CanMove" description="CanMove - признак разрешения перемещения" type="out*/" format="psbool"/>
+		<parameter name="DvUp0" description="- есть команда на движение вперёд" type="internal" format="pschar"/>
+		<parameter name="DvDw0" description="- есть команда на движение назад" type="internal" format="pschar"/>
+		<parameter name="FDvUp0" description="- есть команда на движение вперёд" type="internal" format="pschar"/>
+		<parameter name="FDvDw0" description="- есть команда на движение назад" type="internal" format="pschar"/>
+		<parameter name="BlDv0" description="- была блокировка" type="internal" format="pschar"/>
+		<parameter name="Pkv0" description="Pkv - передний конечный выключатель" type="internal" format="pschar"/>
+		<parameter name="Pkav0" description="Pkav - передний конечный аварийный выключатель" type="internal" format="pschar"/>
+		<parameter name="Zkv0" description="Zkv - задний конечный выключатель" type="internal" format="pschar"/>
+		<parameter name="Zkav0" description="Zkav - задний конечный аварийный выключатель" type="internal" format="pschar"/>
+		<parameter name="txNm" description="txNm - счётчик задержки сигнализации недвижения" type="internal" format="psfloat"/>
+		<parameter name="txSm" description="txSm - счётчик задержки сигнализации самохода" type="internal" format="psfloat"/>
+		<parameter name="txHr" description="txHr - счётчик задержки сигнализации ошибки направления перемещения" type="internal" format="psfloat"/>
+		<parameter name="txLd" description="txLd - счётчик задержки сигнализации превышения времени перемещения" type="internal" format="psfloat"/>
+		<parameter name="fef" description="fef" type="internal" format="pschar"/>
+		<parameter name="FirstEnterFlag" description="FirstEnterFlag" type="internal" format="psbool"/>
+	</header>
+	<header name="scalzz" description="Модуль масштабирования вых.сигнала (цел.) c контролем обрыва" chart="Модули первичной обработки информации" pointer="_lpS_scalzz" direct="_S_scalzz">
+		<parameter name="x" description="x" type="in" format="psint"/>
+		<parameter name="a" description="a" type="tune" format="psint"/>
+		<parameter name="b" description="b" type="tune" format="psint"/>
+		<parameter name="c" description="c" type="tune" format="psfloat"/>
+		<parameter name="d" description="d" type="tune" format="psfloat"/>
+		<parameter name="y" description="y" type="out" format="psfloat"/>
+		<parameter name="y0" description="y0" type="internal" format="psfloat"/>
+	</header>
+	<header name="schl24" description="Логический модуль ' Счетчик 2 из 4 '" chart="Логические звенья" pointer="_lpS_schl24" direct="_S_schl24">
+		<parameter name="x1" description="X1 - вход" type="in" format="psbool"/>
+		<parameter name="x2" description="X2 - вход" type="in" format="psbool"/>
+		<parameter name="x3" description="X3 - вход" type="in" format="psbool"/>
+		<parameter name="x4" description="X4 - вход" type="in" format="psbool"/>
+		<parameter name="y" description="Y - выход" type="out" format="psbool"/>
+	</header>
+	<header name="scos" description="Модуль вычисления косинуса" chart="Элементарные функции" pointer="_lpS_scos" direct="_S_scos">
+		<parameter name="x" description="x - входной параметр" type="in" format="psfloat"/>
+		<parameter name="y" description="y - выходной параметр" type="out" format="psfloat"/>
+		<parameter name="berr" description="berr - признак недостоверности выходного параметра" type="out" format="psbool"/>
+	</header>
+	<header name="sr" description="Модуль вычисления среднего значения из массива вещественных параметров" chart="Элементарные функции" pointer="_lpS_sr" direct="_S_sr">
+		<parameter name="x" description="x - массив входных параметров" type="in" format="psfloat" depended="n"/>
+		<parameter name="n" description="n - N-размерность массива x" type="tune" format="psint"/>
+		<parameter name="y" description="y - среднее значение параметров входного массива" type="out" format="psfloat"/>
+	</header>
+	<header name="srm" description="Вычисление среднего с учётом диагностики" chart="Элементарные функции" pointer="_lpS_srm" direct="_S_srm">
+		<parameter name="x" description="х - массив значений" type="in" format="psfloat" depended="n"/>
+		<parameter name="diag" description=" diag - массив диагностики(1-испр)" type="in" format="psbool" depended="n"/>
+		<parameter name="n" description="n - размерность массива" type="tune" format="psint"/>
+		<parameter name="mk" description="mk - минимальное количество корректных данных" type="tune" format="psint"/>
+		<parameter name="y" description="Y - среднее значение по корректным данным" type="out" format="psfloat"/>
+		<parameter name="az" description="az - признак нарушения количества корректных данных" type="out" format="psbool"/>
+	</header>
+	<header name="swtakt" description="Модуль переключения имитации на короткий шаг" chart="Динамические звенья" pointer="_lpS_swtakt" direct="_S_swtakt">
+		<parameter name="x" description="x - переключения имитации на короткий шаг" type="in" format="psbool"/>
+		<parameter name="y" description="y - переключить" type="out" format="psbool"/>
+		<parameter name="x0" description="x0 - значение входного параметра на предыдущем шаге" type="internal" format="psbool"/>
+	</header>
+	<header name="to3val" description="модель размножения вещественного сигнала" chart="Блоки моделирования объекта управления" pointer="_lpS_to3val" direct="_S_to3val">
+		<parameter name="x1" description="x1 - входной сигнал" type="in" format="psfloat"/>
+		<parameter name="ampl" description="ampl - амплетуда синусоидального отклонения" type="tune" format="psfloat"/>
+		<parameter name="m1" description="m1 - величина отклонения второго сигнала от входного" type="tune" format="psfloat"/>
+		<parameter name="m2" description="m2 - величина отклонения третьего сигнала от входного" type="tune" format="psfloat"/>
+		<parameter name="dis" description="dis - дисперсия отклонения сигналов" type="tune" format="psfloat"/>
+		<parameter name="maxs1" description="maxs1 - макc. значение второго сигнала" type="tune" format="psfloat"/>
+		<parameter name="maxs2" description="maxs2 - макc. значение третьего сигнала" type="tune" format="psfloat"/>
+		<parameter name="Ter" description="Ter (psint)  - тип неисправности" type="tune" format="psint"/>
+		<parameter name="y1" description="y1 - выходной сигнал" type="out" format="psfloat"/>
+		<parameter name="y2" description="y2 - выходной сигнал" type="out" format="psfloat"/>
+		<parameter name="y3" description="y3 - выходной сигнал" type="out" format="psfloat"/>
+		<parameter name="FirstEnterFlag" description="FirsEnterFlag" type="internal" format="psbool"/>
+	</header>
+	<header name="toao" description="Преобразование в код Fas4" chart="Блоки моделирования объекта управления" pointer="_lpS_toao" direct="_S_toao">
+		<parameter name="x" description="x   - входной сигнал" type="in" format="psfloat"/>
+		<parameter name="a" description="a   -  минимальное значение сигнала, который надо подать на ФАС" type="tune" format="psfloat"/>
+		<parameter name="b" description="b   -  максимальное значение сигнала, который надо подать на ФАС" type="tune" format="psfloat"/>
+		<parameter name="c" description="c   - мин. значение кода ФАС" type="tune" format="psfloat"/>
+		<parameter name="d" description="d - макс.  значение кода ФАС" type="tune" format="psfloat"/>
+		<parameter name="Ter" description="Ter (psint)  - тип неисправности" type="tune" format="psint"/>
+		<parameter name="min" description="min - минимальное возможное значение выходного сигнала" type="tune" format="psint"/>
+		<parameter name="max" description="max - максимальное возможное значение выходного сигнала" type="tune" format="psint"/>
+		<parameter name="dis" description="dis - дисперсия 'шума'" type="tune" format="psfloat"/>
+		<parameter name="v" description="y   - выходной сигнал " type="out" format="psint"/>
+		<parameter name="FirstEnterFlag" description="FirstEnterFlag" type="internal" format="psbool"/>
+	</header>
+	<header name="tprg" description="Трехпозиционное реле с гистерезисом" chart="Нелинейные элементы" pointer="_lpS_tprg" direct="_S_tprg">
+		<parameter name="x" description="X" type="in" format="psfloat"/>
+		<parameter name="e" description="E-граница участка неоднозначности" type="tune" format="psfloat"/>
+		<parameter name="f" description="F-граница участка неоднозначности" type="tune" format="psfloat"/>
+		<parameter name="c" description="C-граница участка неоднозначности" type="tune" format="psfloat"/>
+		<parameter name="d" description="D-граница участка неоднозначности" type="tune" format="psfloat"/>
+		<parameter name="y" description="Y  f (= x (= c  --) y = 1" type="out" format="psbool"/>
+		<parameter name="y0" description="state" type="internal" format="psbool"/>
+	</header>
+	<header name="twobool" description="Размножение логического сигнала на 2" chart="Блоки моделирования объекта управления" pointer="_lpS_twobool" direct="_S_twobool">
+		<parameter name="S" description="S (psbool)  - входной сигнал" type="in" format="psbool"/>
+		<parameter name="Ter" description="Ter (psint)  - тип неисправности" type="tune" format="psint"/>
+		<parameter name="Out1" description="Out1 (psbool) - первый выходной сигнал" type="out" format="psbool"/>
+		<parameter name="Out2" description="Out2 (psbool) - второй выходной сигнал" type="out" format="psbool"/>
+		<parameter name="Out10" description="Out10 (psbool) - прошлое значение выходного сигнала" type="internal" format="psbool"/>
+		<parameter name="FirstEnterFlag" description="FirstEnterFlag" type="internal" format="psbool"/>
+	</header>
+	<header name="vchs" description="Модель ионизационной камеры" chart="Блоки моделирования объекта управления" pointer="_lpS_vchs" direct="_S_vchs">
+		<parameter name="N1" description="N1 - поток нейтронов от АЗ1 (нейтр/с)" type="in" format="psfloat"/>
+		<parameter name="N2" description="N2 - поток нейтронов от АЗ2 (нейтр/с)" type="in" format="psfloat"/>
+		<parameter name="XAz1" description="XAz1 - x-координата АЗ1 cм" type="tune" format="psfloat"/>
+		<parameter name="YAz1" description="YAz1 - y-координата АЗ1 cм" type="tune" format="psfloat"/>
+		<parameter name="YAz2" description="YAz2 - y-координата АЗ2 cм" type="tune" format="psfloat"/>
+		<parameter name="XCm" description="XCm - x-координата камеры cм" type="tune" format="psfloat"/>
+		<parameter name="YCm" description="YCm - y-координата камеры см" type="tune" format="psfloat"/>
+		<parameter name="type" description="type - тип камеры" type="tune" format="pschar"/>
+		<parameter name="Ak" description="Ak - калибровочный коэффициент-1 преобразования нейтр/с - имп/с" type="tune" format="psfloat"/>
+		<parameter name="Bk" description="Bk - калибровочный коэффициент-2 преобразования нейтр/с - имп/с" type="tune" format="psfloat"/>
+		<parameter name="Fk" description="Fk - коэфф. преобразования частота-)нейтр/с" type="tune" format="psfloat"/>
+		<parameter name="FMax" description="FMax - предельная частота измеряемая камерой Гц" type="tune" format="psfloat"/>
+		<parameter name="FMin" description="FMin - минимальная частота измеряемая камерой Гц" type="tune" format="psfloat"/>
+		<parameter name="Reff" description="Reff -эффективный радиус РУ (см)" type="tune" format="psfloat"/>
+		<parameter name="Chim" description="Chim - частота импульсов камеры Гц" type="out" format="psfloat"/>
+		<parameter name="Chim0" description="измеренная частота импульсов камеры Гц" type="internal" format="psfloat"/>
+	</header>
+	<header name="vmemb" description="Модуль памяти для логического параметра" chart="Динамические звенья" pointer="_lpS_vmemb" direct="_S_vmemb">
+		<parameter name="x" description="x - входной параметр" type="in" format="psbool"/>
+		<parameter name="y" description="y - выходной параметр" type="out" format="psbool"/>
+		<parameter name="x0" description="x0 - значение входного параметра на предыдущем шаге" type="internal" format="psbool"/>
+	</header>
+	<header name="zpfs" description="Задержка переднего фронта сек" chart="Динамические звенья" pointer="_lpS_zpfs" direct="_S_zpfs">
+		<parameter name="x" description="x - входной сигнал" type="in" format="psbool"/>
+		<parameter name="tz" description="tz - время задержки сек" type="tune" format="psfloat"/>
+		<parameter name="y" description="y - выходной сигнал" type="out" format="psbool"/>
+		<parameter name="tx" description="tx - время накопленное сек" type="internal" format="psfloat"/>
+		<parameter name="y0" description="y0" type="internal" format="pschar"/>
+	</header>
+	<header name="zzfs" description="Задержка заднего фронта сек" chart="Динамические звенья" pointer="_lpS_zzfs" direct="_S_zzfs">
+		<parameter name="x" description="x - входной сигнал" type="in" format="psbool"/>
+		<parameter name="tz" description="tz - время задержки сек" type="tune" format="psfloat"/>
+		<parameter name="y" description="y - выходной сигнал" type="out" format="psbool"/>
+		<parameter name="tx" description="tx - время накопленное сек" type="internal" format="psfloat"/>
+		<parameter name="y0" description="y0" type="internal" format="pschar"/>
+	</header>
+</LibHeader>

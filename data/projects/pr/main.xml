@@ -1,0 +1,10 @@
+<Project>
+	<path>data/projects/pr</path>
+	<general name="bars" description="Система БАРС"/>
+	<subsystem>
+		<subs name="scm" path="scm" platform="pti" description="Модель объекта системы" type="mono" step="20"/>
+		<subs name="DU" path="DU" platform="fp8" description="Подсистема управления" type="dual" step="20"/>
+		<subs name="Baz1" path="Baz1" platform="fp8" description="Первый канал БАЗ" type="dual" step="20"/>
+		<subs name="Baz2" path="Baz2" platform="fp8" description="Второй канал БАЗ" type="dual" step="20"/>
+	</subsystem>
+</Project>

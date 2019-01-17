@@ -1,0 +1,22 @@
+<DriverXML>
+	<driver name="vchs" description="Типовой драйвер ВЧС" code="0xc4" lenData="670" lenInit="12" header="fp8/drivers/vchs2.h">
+		<signals>
+			<signal name="K01VCHS" format="8" mode="input" address="0"/>
+			<signal name="K02VCHS" format="8" mode="input" address="5"/>
+		</signals>
+		<init type="vchs_inipar">
+			<signal name="type" format="18" mode="input" address="0" value="172"/>
+			<signal name="BoxLen" format="2" mode="input" address="1" value="255"/>
+			<signal name="vip" format="18" mode="input" address="2" value="1"/>
+			<signal name="NumCh" format="18" mode="input" address="3" value="8"/>
+			<signal name="Usmask" format="18" mode="input" address="4" value="0xff"/>
+			<signal name="ChMask" format="18" mode="input" address="5" value="0"/>
+			<signal name="chn1d" format="18" mode="input" address="6" value="0x1"/>
+			<signal name="chn2d" format="18" mode="input" address="7" value="0x1"/>
+			<signal name="Gmin1" format="8" mode="input" address="8" value="0"/>
+			<signal name="Gmin2" format="8" mode="input" address="9" value="0"/>
+			<signal name="Gmax1" format="8" mode="input" address="10" value="1000000"/>
+			<signal name="Gmax2" format="8" mode="input" address="11" value="1000000"/>
+		</init>
+	</driver>
+</DriverXML>

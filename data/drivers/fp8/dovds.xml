@@ -1,0 +1,12 @@
+<DriverXML>
+	<driver name="dovds" description="dovds" code="0x22" lenData="12" lenInit="1" header="drivers/DoVds.h">
+		<signals>
+			<signal name="numE" format="4" mode="output" address="0"/>
+			<signal name="tempDoVds" format="4" mode="output" address="4"/>
+			<signal name="NumErr" format="4" mode="output" address="8"/>
+		</signals>
+		<init type="doVds_inipar">
+			<signal name="init" format="18" mode="input" address="0" value="0"/>
+		</init>
+	</driver>
+</DriverXML>

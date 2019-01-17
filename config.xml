@@ -1,0 +1,11 @@
+<SystemConfig>
+    <users>data/users.xml</users>
+    <projectpath>data/projects</projectpath>
+    <logpath>data/log</logpath>
+    <driverspath>data/drivers</driverspath>
+    <libpath>data/Lib/INCL</libpath>
+    <namexml>libxml.xml</namexml>
+    <libwin1251>true</libwin1251>
+    <iconpath>data/Lib/SVG</iconpath>
+    <port>3000</port>
+</SystemConfig>

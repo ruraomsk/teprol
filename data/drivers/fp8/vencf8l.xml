@@ -1,0 +1,29 @@
+<DriverXML>
+	<driver name="vencf8l" description="Драйвер Энкодеров" code="0x02" lenData="84" lenInit="5" header="fp8/drivers/vencf8l.h">
+		<signals>
+			<signal name="gray01" format="4" mode="input" address="0"/>
+			<signal name="gray02" format="4" mode="input" address="5"/>
+			<signal name="gray03" format="4" mode="input" address="10"/>
+			<signal name="gray04" format="4" mode="input" address="15"/>
+			<signal name="gray05" format="4" mode="input" address="20"/>
+			<signal name="gray06" format="4" mode="input" address="25"/>
+			<signal name="gray07" format="4" mode="input" address="30"/>
+			<signal name="gray08" format="4" mode="input" address="35"/>
+			<signal name="venc01" format="5" mode="input" address="40"/>
+			<signal name="venc02" format="5" mode="input" address="45"/>
+			<signal name="venc03" format="5" mode="input" address="50"/>
+			<signal name="venc04" format="5" mode="input" address="55"/>
+			<signal name="venc05" format="5" mode="input" address="60"/>
+			<signal name="venc06" format="5" mode="input" address="65"/>
+			<signal name="venc07" format="5" mode="input" address="70"/>
+			<signal name="venc08" format="5" mode="input" address="75"/>
+		</signals>
+		<init type="vencf8_inipar">
+			<signal name="typeVds" format="18" mode="input" address="0" value="0xc2"/>
+			<signal name="BoxLen" format="2" mode="input" address="1" value="0xff"/>
+			<signal name="vip" format="18" mode="input" address="2" value="0"/>
+			<signal name="AdrFds" format="18" mode="input" address="3" value="0x6"/>
+			<signal name="typeFds" format="18" mode="input" address="4" value="0x04"/>
+		</init>
+	</driver>
+</DriverXML>
