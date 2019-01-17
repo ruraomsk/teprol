@@ -31,9 +31,9 @@ func main() {
 	Config = config.SetupConfig()
 	// fmt.Println(Config.ToString())
 	fmt.Println("Config loaded.")
-
-	if logger.Init(Config.LogPath) != nil {
-		fmt.Println("ERROR init loggin subsystem.\nExit server...")
+	err = logger.Init(Config.LogPath)
+	if err != nil {
+		fmt.Printf("ERROR init loggin subsystem %s\nExit server...", err.Error())
 		return
 	}
 	fmt.Println("Loggin system ready.")
