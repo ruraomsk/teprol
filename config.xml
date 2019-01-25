@@ -8,4 +8,9 @@
     <libwin1251>true</libwin1251>
     <iconpath>data/Lib/SVG</iconpath>
     <port>3000</port>
+    <serverDB>192.168.1.242</ServerDB>
+    <nameDB>json</NameDB>
+    <userDB>postgres</userDB>
+    <password>162747</Password>
+
 </SystemConfig>

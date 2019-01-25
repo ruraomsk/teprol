@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"rura/teprol/config"
+	"rura/teprol/dataBase"
 	"rura/teprol/logger"
 	"rura/teprol/project"
 	"rura/teprol/router"
@@ -26,6 +27,8 @@ var LibHeaders project.LibHeader
 //ListUsers все пользователи
 var ListUsers router.Users
 
+var ConDB dataBase.DBConnect
+
 func main() {
 
 	Config = config.SetupConfig()
@@ -37,6 +40,13 @@ func main() {
 		return
 	}
 	fmt.Println("Loggin system ready.")
+	ConDB, err = dataBase.DBConnectMake(Config)
+	if err != nil {
+		fmt.Printf("ERROR init DataBase subsystem %s\nExit server...", err.Error())
+		return
+	}
+	fmt.Println("DataBase ready.")
+
 	ListUsers, err = router.LoadAllUsers(Config.Users)
 	if err != nil {
 		fmt.Printf("ERROR loading users %s\nExit server...", err.Error())
@@ -46,13 +56,13 @@ func main() {
 
 	AllProjects, err = project.LoadAllProjects(Config.ProjectPath)
 	if err != nil {
-		fmt.Println("ERROR loading progects %s\nExit server...", err.Error())
+		fmt.Printf("ERROR loading progects %s\nExit server...", err.Error())
 		return
 	}
 	fmt.Println("All projects loaded.")
 	AllDrivers, err = project.LoadAllDrivers(Config.DriversPath)
 	if err != nil {
-		fmt.Println("ERROR loading drivers %s\nExit server...", err.Error())
+		fmt.Printf("ERROR loading drivers %s\nExit server...", err.Error())
 		return
 	}
 	fmt.Println("All drivers loaded.")
@@ -88,6 +98,7 @@ func main() {
 		return
 	}
 	fmt.Println("All SVG files loaded.")
+	// Создаем базу даннх
 
 	allChans := router.InitChans(AllProjects)
 	fmt.Println("Server started")

@@ -1,7 +1,7 @@
 package project
-import(
-	"encoding/json"
 
+import (
+	"encoding/json"
 )
 
 //Drivers хранение всех драйверов
@@ -21,10 +21,11 @@ func (d *Drivers) ToString() string {
 //DriverXML Заголовок описания драйвера
 type DriverXML struct {
 	Driver Driver `xml:"driver" json:"driver"`
-	Path	string
+	Path   string
 }
+
 //ToJSON вывод в формате Json
-func (d *DriverXML) ToJSON() ([]byte,error){
+func (d *DriverXML) ToJSON() ([]byte, error) {
 	return json.Marshal(d)
 }
 

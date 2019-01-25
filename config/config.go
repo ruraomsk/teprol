@@ -3,9 +3,10 @@ package config
 import (
 	"encoding/xml"
 	"fmt"
-	"github.com/clbanning/mxj"
 	"io/ioutil"
 	"os"
+
+	"github.com/clbanning/mxj"
 )
 
 //SystemConfig настроечные параметры системы
@@ -19,6 +20,10 @@ type SystemConfig struct {
 	LibWin1251  bool   `xml:"libwin1251"`
 	IconPath    string `xml:"iconpath"`
 	Port        int    `xml:"port"`
+	ServerDB    string `xml:"serverDB"`
+	NameDB      string `xml:"nameDB"`
+	UserDB      string `xml:"userDB"`
+	Password    string `xml:"password"`
 }
 
 //ToString вывод с строку
